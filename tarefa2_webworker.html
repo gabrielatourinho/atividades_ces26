@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Count numbers: <output id="result"></output></p>
+<p>Message exchange: <output id="messagedemo"></output></p>
+<button onclick="startWorkers()">Start Workers</button> 
+<button onclick="stopWorkers()">Stop Workers</button>
+
+<script>
+var worker1, worker2;
+
+function startWorkers() {
+    if(typeof(Worker) !== "undefined") {
+        if(typeof(worker1) == "undefined") {
+            worker1 = new Worker("demo1.js");
+        }
+        if(typeof(worker2) == "undefined") {
+            worker2 = new Worker("demo2.js");
+        }
+        worker1.onmessage = function(event) {
+            document.getElementById("result").innerHTML = event.data;
+        };
+        
+        worker2.addEventListener('message', function(e) { console.log('Worker said: ', e.data); }, false);
+        worker2.postMessage('Testing postMessage to worker.'); //Envia a mensagem ao worker
+        
+        worker2.onmessage = function(event) {
+            document.getElementById("messagedemo").innerHTML = event.data;
+        };
+        
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+        document.getElementById("messagedemo").innerHTML = "Sorry, your browser does not support Web Workers...";
+    }
+}
+
+function stopWorkers() { 
+    worker1.terminate();
+    worker1 = undefined;
+     
+    worker2.terminate();
+    worker2 = undefined;
+}
+</script>
+
+</body>
+</html>
