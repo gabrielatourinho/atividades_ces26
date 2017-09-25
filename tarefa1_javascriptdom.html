@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+    
+<h1 id="intro">Explorando a interface DOM</h1>
+
+<p>Teste os bot&otilde;es abaixo:</p>
+
+<button onclick="testingCreateElement()">Criar novo bot&atilde;o</button>
+<button onclick="testingRemoveElement()">Remover novo bot&atilde;o</button>
+<button onclick="testingModifyingElement()">Modificar header</button>
+
+<p id="demo"></p>
+
+<script>
+var novobotao;
+var texto;
+var botaocriado = false;
+
+function testingCreateElement() {
+    if (!botaocriado){
+        novobotao = document.createElement("BUTTON");
+        texto = document.createTextNode("NOVO ELEMENTO BUTTON CRIADO");
+        novobotao.appendChild(texto);
+        document.getElementById("demo").appendChild(novobotao);
+        botaocriado = true;
+    }
+}
+
+function testingRemoveElement() {
+    if (botaocriado){
+        novobotao.removeChild(texto);
+        document.getElementById("demo").innerHTML = '';
+        botaocriado = false;
+    }
+}
+
+function testingModifyingElement() {
+    document.getElementById("intro").innerHTML = "Header modificado!!!";
+}
+
+</script>
+
+</body>
+</html>
