@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition); //WATCH POSITION ATUALIZA AO LONGO DO TEMPO
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude +
+    "<br>Position Accuracy: " + position.coords.accuracy +
+    "<br>Altitude: " + position.coords.altitude +
+    "<br>Speed: " + position.coords.speed;
+}
+</script>
+
+</body>
+</html>
