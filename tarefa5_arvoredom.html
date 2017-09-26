@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .ancestors * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+            }
+        </style>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+            $("span").parent().css({"color": "red", "border": "2px solid red"}); //pintar todos os parents de qualquer span de vermelho
+            $("span").siblings().css({"color": "blue", "border": "2px solid blue"}); //pintar os siblings de span de azul, se houver siblings
+            $("div").children().css({"color": "green", "border": "2px solid green"}); //pintar os filhos de div de verde
+            });
+        </script>
+    </head>
+    
+    <body class="ancestors">body (great-great-grandparent)
+        <div style="width:500px;">div (great-grandparent)
+            <ul>ul (grandparent)
+                <li>li (direct parent)
+                    <span>span</span>
+                    <span>another span</span>
+                </li>
+                <li>li (direct parent)
+                    <span>span</span>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

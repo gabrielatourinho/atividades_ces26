@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("h1").slideUp(4000).slideDown(2000);
+                
+                $("#btn1").click(function(){
+                    alert("HTML: "+$("#p1").html());
+                });
+                $("#btn2").click(function(){
+                    $("#inputtest").val("Final value");
+                });
+                $("#btn3").click(function(){
+                    $("p").hide(); // esconde todos os paragrafos após o click no botão
+                });
+                $("#p3").on({
+                    mouseenter: function(){
+                        $(this).css("background-color","lightgray");
+                    },
+                    mouseleave: function(){
+                        $(this).css("background-color", "lightblue");
+                    }
+                });
+                $("#p4").on({
+                    click: function(){
+                        $(this).css("background-color", "yellow");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>This heading slides Up and Down.</h1>
+        <button id="btn1">Show HTML for Paragraph 1</button>
+        <button id="btn2">Set Value on Input field</button>
+        <button id="btn3">Hide all paragraphs</button>
+        
+        
+        <p id="p1"><strong>Paragraph 1:</strong> <i>Multiple</i> <mark>examples</mark> of text <b>formatation</b>.</p>
+        <p>Input field: <input type="text" id="inputtest" value="Initial value"></p>
+        <p id="p3">Changes background color on mouse enter and mouse leave!</p>
+        <p id="p4">Changes background color on click!</p>
+    </body>
+</html>
